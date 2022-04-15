@@ -1,0 +1,16 @@
+.Switch__Wrapper{
+    background-color: gray;
+    display: none;
+}
+
+.Switch__Wrapper > button{
+    
+    font-size: 1rem;
+}
+
+@media screen and (max-width : 450px) {
+    .Switch__Wrapper{
+        display: flex;
+        justify-content: space-around;
+    }
+}

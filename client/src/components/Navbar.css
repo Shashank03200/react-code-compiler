@@ -1,0 +1,35 @@
+.navbar{
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    
+    text-align: center;
+    
+    background-color: #474747;
+    gap: 20px;
+    
+}
+
+.navbar__options{
+    display: flex;
+    gap: 4rem;
+}
+.navbar h1{
+    color: aliceblue;
+}
+
+.nav-item-select{
+    margin-right: 20px;
+   
+    display: flex;
+    align-items: center;
+}
+
+.nav-item-select > label{
+    color: white;
+}
+
+.navbar-nav{
+    display: flex;
+    justify-content: end;
+}

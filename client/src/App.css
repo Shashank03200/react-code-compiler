@@ -1,0 +1,10 @@
+
+
+.App__Editor{
+  width: 100%;
+  height: calc(80vh);
+  max-height: 80vh;
+  margin: 30px auto;
+}
+
+

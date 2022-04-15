@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+
 import Editor from "@monaco-editor/react";
 
 import "./App.css";
@@ -8,49 +8,27 @@ import NavBar from "./components/NavBar";
 import Switch from "./components/Switch";
 import IOContainer from "./components/IOContainer";
 import EditorHeader from "./components/EditorHeader";
+import useCompile from "./hooks/useCompile";
 
 function App() {
-  const [userCode, setUserCode] = useState("");
-  const [userLang, setUserLang] = useState("python");
-  const [userInput, setUserInput] = useState("");
-  const [userOutput, setUserOutput] = useState("");
-
-  const [userTheme, setUserTheme] = useState("vs-dark");
-  const [fontSize, setFontSize] = useState(18);
-
-  const [isCompiling, setIsCompiling] = useState(false);
-  const [error, setError] = useState("");
-
-  const options = {
+  const {
+    userCode,
+    setUserCode,
+    userLang,
+    setUserLang,
+    userInput,
+    setUserInput,
+    userOutput,
+    setUserOutput,
+    userTheme,
+    setUserTheme,
+    isCompiling,
+    compileCodeHandler,
+    userInputChangeHandler,
+    options,
     fontSize,
-  };
-
-  const compileCodeHandler = async () => {
-    setIsCompiling(true);
-    if (userCode === ``) {
-      setError("No code available");
-    }
-
-    const response = await axios({
-      method: "POST",
-      url: "/compile",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      data: {
-        code: userCode,
-        language: userLang,
-        input: userInput,
-      },
-    });
-    setIsCompiling(false);
-    const codeCompilationResult = response.data;
-    setUserOutput(codeCompilationResult.output);
-  };
-
-  const userInputChangeHandler = (e) => {
-    setUserInput(e.target.value);
-  };
+    setFontSize,
+  } = useCompile();
 
   return (
     <>
